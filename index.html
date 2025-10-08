@@ -1,509 +1,256 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Home – ARAC International</title>
-  <!--
-    This page borrows the layout and interactive features from the IOSI Global
-    site but re‑styles them for ARAC International. The dark colour palette
-    evokes the greens and teals used throughout the ARAC global site while
-    retaining the modern, spacious feel of the original design.  Node
-    buttons below link to key ARAC resources on discover.arac‑international.org
-    and the global site.
-  -->
-  <!-- Include Montserrat from Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARAC Strategic Communications Division</title>
   <style>
-    /* Spacing and typography variables borrowed from IOSI Global */
     :root {
-      --breakpoint-xs: 440px;
-      --breakpoint-sm: 800px;
-      --breakpoint-md: 1200px;
-      --breakpoint-lg: 1600px;
-      --font-xs: 12px;
-      --font-sm: 15px;
-      --font-md: 18px;
-      --font-hg: 25px;
-      --font-lg: 32px;
-      --font-xl: 48px;
-      --font-xxl: 60px;
-      --font-xxxl: 100px;
-      --space-xxs: 5px;
-      --space-xs: 10px;
-      --space-sm: 15px;
-      --space-md: 22px;
-      --space-hg: 30px;
-      --space-lg: 50px;
-      --space-xl: 70px;
-      --space-xxl: 100px;
-      --space-xxxl: 140px;
-      --radius-sm: 15px;
-      --radius-md: 30px;
-      --radius-lg: 50px;
+      --teal: #00b9a1;
+      --green: #4CAF50;
+      --ink: #0a0a0a;
+      --bg: #000000;
+      --text: #f5f5f5;
     }
-
-    /* Custom palette for ARAC International.  These values were chosen
-       based on the colours observed on the ARAC global site: dark greens
-       for backgrounds and vibrant teals/greens for highlights. */
-    :root {
-      --aracdark: #002d24;
-      --araclight: #01473d;
-      --aracgrey: #cecece;
-      --aracaccent: #009688;
-      --aracaccentlight: #2ab27b;
-      --contentwidth: 680px;
-      --font-md: 20px;
-      --primary: var(--aracaccent);
-      --secondary: var(--aracaccentlight);
-      --text-primary: var(--aracaccentlight);
-      --text-secondary: var(--aracgrey);
-      --text-paragraph-color: var(--text-secondary);
-      --ui-bg: var(--aracdark);
-      --ui-bg-alt: var(--araclight);
-      --ui-accent: var(--aracaccentlight);
-      --ui-text: var(--aracaccentlight);
-      --ui-button-active-fill: linear-gradient(to right, rgba(255, 255, 255, 0.67), rgba(255, 255, 255, 0.38));
-      --ui-button-active-text: var(--aracdark);
-      --ui-input-background: var(--aracdark);
-      --easingfunction: cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    /* Base styles */
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
     body {
       margin: 0;
-      padding: 0;
-      line-height: 1.4;
-      background-color: var(--araclight);
-      color: var(--text-secondary);
-      overflow-x: hidden;
-      font-family: 'Montserrat', sans-serif;
-    }
-    h1 {
-      margin: 0;
-      font-size: var(--font-xl);
-      font-weight: 700;
-      color: var(--text-primary);
-    }
-    h2 {
-      margin: 0;
-      font-size: var(--font-lg);
-      font-weight: 700;
-      color: var(--text-primary);
-      text-transform: uppercase;
-    }
-    a {
-      color: var(--primary);
-      text-decoration: none;
-    }
-    .rows {
-      display: flex;
-      flex-direction: column;
-    }
-    .cols-flex {
-      display: flex;
-    }
-    .center {
-      justify-content: center;
-      align-items: center;
-    }
-    .text-center {
-      text-align: center;
-    }
-    .gap-sm { gap: var(--space-sm); }
-    .gap-md { gap: var(--space-md); }
-    .gap-lg { gap: var(--space-lg); }
-    .gap-xl { gap: var(--space-xl); }
-    .padding-md { padding: var(--space-md); }
-    .padding-xl { padding: var(--space-xl); }
-    @media (max-width: 1600px) {
-      .padding-xl { padding: var(--space-lg); }
-    }
-    @media (max-width: 1200px) {
-      .padding-xl { padding: var(--space-hg); }
-    }
-    @media (max-width: 800px) {
-      .padding-xl { padding: var(--space-md); }
-    }
-    @media (max-width: 440px) {
-      .padding-xl { padding: var(--space-sm); }
-    }
-
-    /* Node button styles based on IOSI but recoloured for ARAC */
-    .node-button {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 15px 30px;
-      height: 70px;
-      background-color: var(--ui-bg);
-      color: var(--ui-text);
-      border: 1px solid var(--ui-accent);
-      border-radius: 35px;
-      backdrop-filter: blur(15px);
-      text-align: center;
-      text-transform: uppercase;
-      font-weight: 500;
-      font-size: 16px;
-      position: relative;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      background: radial-gradient(circle at 50% 40%, var(--ink), var(--bg));
+      color: var(--text);
       overflow: hidden;
-      transition: transform 0.2s ease;
     }
-    .node-button span {
-      font-size: 13px;
-      color: var(--text-secondary);
-      text-transform: none;
-    }
-    .node-button::before {
-      content: "";
-      background: var(--ui-button-active-fill);
+    header {
       position: absolute;
-      z-index: -1;
-      width: 200%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
-    .node-button:hover {
-      transform: scale(1.02);
-    }
-    .node-button:hover::before {
-      opacity: 1;
-    }
-
-    /* Background wrapper for blur effect */
-    .bg-wrapper {
-      position: fixed;
-      z-index: -5;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      overflow: hidden;
-      filter: blur(3px);
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
-    }
-
-    /* Logo container retains the 3D perspective from IOSI but uses ARAC colours */
-    .logo {
-      position: relative;
-      width: 240px;
-      height: 240px;
-      transform-style: preserve-3d;
-      perspective: 150px;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      z-index: 10;
+      padding: 0 12px;
       user-select: none;
+      pointer-events: none;
     }
-    @media (max-width: 1000px) {
-      .logo {
-        width: 180px;
-        height: 180px;
-      }
-    }
-    .logo div, .logo svg {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-    }
+    header img { width: 220px; max-width: 60vw; filter: drop-shadow(0 2px 12px rgba(0,0,0,.5)); }
+    header h1 { margin: 10px 0 0; color: var(--teal); font-weight: 700; letter-spacing: .3px; }
+    header p { margin: 6px 0 0; opacity: .9; }
 
-    /* Footer styles */
-    footer {
-      background-color: var(--ui-bg);
-      color: var(--text-secondary);
-      padding: var(--space-lg);
+    canvas { display: block; width: 100vw; height: 100vh; }
+
+    .links {
+      position: absolute; bottom: 34px; left: 50%; transform: translateX(-50%);
+      width: 100%; max-width: 1200px; padding: 0 12px; text-align: center; z-index: 5;
     }
-    footer a {
-      color: var(--primary);
-      font-size: var(--font-xs);
+    .links a {
+      display: inline-block; margin: 6px 8px; padding: 10px 14px 11px;
+      background: var(--teal); color: #00110d; text-decoration: none;
+      border-radius: 8px; font-weight: 700; letter-spacing: .2px; transition: transform .15s ease, background .2s ease;
+      box-shadow: 0 6px 20px rgba(0,185,161,.18);
     }
-    footer .socials svg {
-      width: 24px;
-      height: 24px;
-      fill: var(--primary);
-      transition: fill 0.3s ease;
-    }
-    footer .socials a:hover svg {
-      fill: var(--secondary);
-    }
+    .links a:hover { background: var(--green); transform: translateY(-1px); }
+
+    /* Tiny helper label for load state */
+    #status { position: absolute; top: 10px; left: 10px; font-size: 12px; opacity: .7; z-index: 15; }
   </style>
 </head>
 <body>
-  <!-- Background image wrapper.  You can replace the placeholder URL with
-       a high‑resolution landscape or abstract texture that matches the
-       ARAC aesthetic. -->
-  <div class="bg-wrapper" style="background-image:url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1440&q=80');"></div>
+  <div id="status">loading…</div>
+  <header>
+    <img src="IMG_0868.PNG" alt="ARAC Logo" />
+    <h1>Strategic Communications Division</h1>
+    <p>Data Journalism & Analytical Communications for Peace and Security</p>
+  </header>
 
-  <div class="main gap-xl padding-xl" style="position:relative; padding-bottom: 0;">
-    <!-- Header with ARAC logo and title -->
-    <div class="header rows padding-md center">
-      <div class="logo">
-        <!-- Background circle -->
-        <svg viewBox="0 0 231 231">
-          <circle cx="115.5" cy="115.5" r="115.5" fill="var(--ui-bg)" />
-        </svg>
-        <!-- Ring -->
-        <svg viewBox="0 0 231 231" style="transform: translateZ(10px);">
-          <circle cx="115.5" cy="115.5" r="110" fill="none" stroke="var(--ui-accent)" stroke-width="4" />
-        </svg>
-        <!-- Inner emblem: simplified globe using paths -->
-        <svg viewBox="0 0 231 231" style="transform: translateZ(30px);">
-          <g fill="var(--ui-accent)">
-            <circle cx="115.5" cy="115.5" r="40" />
-            <!-- continents represented by abstract shapes -->
-            <path d="M115.5,80c10,10,20,15,0,30-20-5-30-15,0-30Z" />
-            <path d="M100,115c5,10,15,10,5,25-15-5-20-10-5-25Z" />
-            <path d="M130,115c-5,10-15,10-5,25 15-5 20-10 5-25Z" />
-          </g>
-        </svg>
-        <!-- Motto text -->
-        <svg viewBox="0 0 231 231" style="transform: translateZ(15px);">
-          <text x="50%" y="80%" dominant-baseline="middle" text-anchor="middle" fill="var(--ui-accent)" font-size="20" font-weight="600">Peace &amp; Human Rights</text>
-        </svg>
-      </div>
-    </div>
-    <header class="space-around-sm rows gap-hg center" style="margin-top: var(--space-lg);">
-      <div class="rows">
-        <h1>ARAC INTERNATIONAL</h1>
-        <div class="text-center">Peacebuilding, Human Rights &amp; Sustainable Development</div>
-      </div>
-    </header>
-    <!-- Node button grid.  Each button links to key areas of ARAC's work.
-         Feel free to update the URLs as new pages are published on the
-         discover.arac‑international.org or global.arac‑international.org sites. -->
-    <div class="page-wrapper rows">
-      <div class="content rows padding-xl gap-md" style="max-width: 680px; width: 100%; margin: 0 auto;">
-        <a class="node-button" target="_blank" href="https://global.arac-international.org/about">
-          About Us<span>Learn who we are</span>
-        </a>
-        <a class="node-button" target="_blank" href="https://global.arac-international.org/our-work">
-          Our Work<span>Explore programmes &amp; projects</span>
-        </a>
-        <a class="node-button" target="_blank" href="https://global.arac-international.org/news">
-          News<span>Read the latest updates</span>
-        </a>
-        <a class="node-button" target="_blank" href="https://global.arac-international.org/peacekeeper-insight">
-          Research<span>Peacekeeper insights &amp; reports</span>
-        </a>
-        <a class="node-button" target="_blank" href="https://global.arac-international.org/advocacy-and-consulting/positive-peace-consultation">
-          Consulting<span>Positive peace consultation</span>
-        </a>
-        <a class="node-button" target="_blank" href="https://discover.arac-international.org/contact-us">
-          Contact<span>Get in touch</span>
-        </a>
-        <a class="node-button" target="_blank" href="https://global.arac-international.org/call-to-action">
-          Take Action<span>Support our mission</span>
-        </a>
-        <a class="node-button" target="_blank" href="https://global.arac-international.org/partner-links">
-          Partners<span>See our collaborations</span>
-        </a>
-      </div>
-    </div>
+  <canvas id="network" aria-label="Animated partner network visualization"></canvas>
 
-    <!-- Mission section rewritten for ARAC International.  The paragraph
-         content summarises the organisation’s core values and goals. -->
-    <div id="mission" class="rows gap-lg center" style="margin-top: var(--space-xxl);">
-      <div class="columns rows gap-lg center" style="width: 100%;">
-        <div>
-          <h2 class="space-around-lg text-center">Peace &amp; Human Rights Advocacy</h2>
-          <div class="rows gap-sm" style="max-width: 700px; margin: 0 auto; text-align: justify; margin-bottom: 50px; padding:10px">
-            <p>At ARAC International we champion a future where every person can live free from fear and want. Our mission is to promote sustainable development and the preservation of human rights through evidence‑based peace research and advocacy.</p>
-            <p>Our multidisciplinary teams conduct risk analyses in conflict zones, provide humanitarian aid support and develop policy recommendations aligned with the United Nations’ Sustainable Development Goals (SDGs) and the U.S. Global Fragility Act.  We work closely with partners around the world to foster a culture of peace, justice and human dignity.</p>
-            <p>Whether analysing political risk, advising on security management, or training communities on positive peace frameworks, ARAC International strives to empower individuals and organisations to build a more peaceful and sustainable world.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Partnerships section with connecting dots and rotating partner logos.  The
-         images currently reuse the partner logos from the IOSI site as
-         placeholders.  Replace the src URLs with logos relevant to ARAC when
-         available. -->
-    <div id="partners" class="rows gap-lg center" style="margin-top: var(--space-xxl);">
-      <div class="columns rows gap-lg center" style="width: 100%;">
-        <div>
-          <h2 class="space-around-lg text-center">Global Partnerships</h2>
-          <div class="rows gap-sm" style="max-width: 700px; margin: 0 auto; text-align: justify; margin-bottom: 50px;padding:10px">
-            <p>We believe that collective action is essential to address complex global challenges.  ARAC International collaborates with governmental organisations, non‑profits and research institutions to advance peace, security and sustainable development.</p>
-            <p>The carousel below illustrates how our network spans the globe.  Each partner plays a unique role in our shared mission to safeguard human rights and promote stability.</p>
-          </div>
-        </div>
-        <div class="whole-wrapper">
-          <div class="canvas-wrapper">
-            <canvas class="connecting-dots"></canvas>
-            <div class="scope">
-              <!-- The `--i` variables set the rotation for each logo.  Feel free
-                   to substitute these images with ARAC’s partners (e.g., UN,
-                   USAID, IEP) once appropriate artwork is available. -->
-              <span style="--i:0"><img src="https://dev.iosi.global/wp-content/themes/iosi-global/partners/SVG/cia.svg" loading="lazy" alt="Partner 1"/></span>
-              <span style="--i:1"><img src="https://dev.iosi.global/wp-content/themes/iosi-global/partners/SVG/dea.svg" loading="lazy" alt="Partner 2"/></span>
-              <span style="--i:2"><img src="https://dev.iosi.global/wp-content/themes/iosi-global/partners/SVG/oas.svg" loading="lazy" alt="Partner 3"/></span>
-              <span style="--i:3"><img src="https://dev.iosi.global/wp-content/themes/iosi-global/partners/SVG/csis.svg" loading="lazy" alt="Partner 4"/></span>
-              <span style="--i:4"><img src="https://dev.iosi.global/wp-content/themes/iosi-global/partners/SVG/de.svg" loading="lazy" alt="Partner 5"/></span>
-              <span style="--i:5"><img src="https://dev.iosi.global/wp-content/themes/iosi-global/partners/SVG/fbi.svg" loading="lazy" alt="Partner 6"/></span>
-              <span style="--i:6"><img src="https://dev.iosi.global/wp-content/themes/iosi-global/partners/SVG/southcom.svg" loading="lazy" alt="Partner 7"/></span>
-              <span style="--i:7"><img src="https://dev.iosi.global/wp-content/themes/iosi-global/partners/SVG/dgse.svg" loading="lazy" alt="Partner 8"/></span>
-              <span style="--i:8"><img src="https://dev.iosi.global/wp-content/themes/iosi-global/partners/SVG/audefence.svg" loading="lazy" alt="Partner 9"/></span>
-              <span style="--i:9"><img src="https://dev.iosi.global/wp-content/themes/iosi-global/partners/SVG/isi.svg" loading="lazy" alt="Partner 10"/></span>
-              <span style="--i:10"><img src="https://dev.iosi.global/wp-content/themes/iosi-global/partners/SVG/jid.svg" loading="lazy" alt="Partner 11"/></span>
-              <span style="--i:11"><img src="https://dev.iosi.global/wp-content/themes/iosi-global/partners/SVG/mossad.svg" loading="lazy" alt="Partner 12"/></span>
-              <span style="--i:12"><img src="https://dev.iosi.global/wp-content/themes/iosi-global/partners/SVG/sis.svg" loading="lazy" alt="Partner 13"/></span>
-              <span style="--i:13"><img src="https://dev.iosi.global/wp-content/themes/iosi-global/partners/SVG/nato.svg" loading="lazy" alt="Partner 14"/></span>
-              <span style="--i:14"><img src="https://dev.iosi.global/wp-content/themes/iosi-global/partners/SVG/ussc.svg" loading="lazy" alt="Partner 15"/></span>
-              <span style="--i:15"><img src="https://dev.iosi.global/wp-content/themes/iosi-global/partners/SVG/iosi.svg" loading="lazy" alt="Partner 16"/></span>
-              <span style="--i:16"><img src="https://dev.iosi.global/wp-content/themes/iosi-global/partners/SVG/interpol.svg" loading="lazy" alt="Partner 17"/></span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- The doctrine overlay from IOSI reimagined for ARAC.  Each word
-         reflects core values of peace, justice and sustainable development. -->
-    <div style="position: fixed; z-index: -5; width: 100%; height: 100%; top: 0; left: 0; overflow: hidden;">
-      <div id="doctrine">
-        <div style="transform: translateZ(1.7px); right: 11%; top: 20%; text-align: right; color: var(--aracgrey);">PEACEBUILDING</div>
-        <div style="transform: translateZ(1.4px); left: 14%; top: 12%; color: var(--aracgrey);">SUSTAINABILITY</div>
-        <div style="transform: translateZ(1px); font-size: calc(var(--font-md) + 6px); right: 20%; top: 37%; text-align: right; color: var(--aracgrey);">HUMAN RIGHTS</div>
-        <div style="transform: translateZ(1.2px); left: 6%; top: 53%; color: var(--aracgrey);">COLLABORATION</div>
-        <div style="transform: translateZ(1.4px); right: 0%; top: 61%; text-align: right; color: var(--aracgrey);">POSITIVE PEACE</div>
-        <div style="transform: translateZ(1.6px); left: 15%; top: 76%; color: var(--aracgrey);">MORAL REASONING</div>
-      </div>
-    </div>
+  <div class="links" aria-label="Primary navigation">
+    <a href="https://newsletter.arac-international.org" target="_blank" rel="noopener">Newsletter & Flashpoints</a>
+    <a href="https://afsdata.net" target="_blank" rel="noopener">Data Journalism</a>
+    <a href="https://gsn-app.arac-international.org" target="_blank" rel="noopener">Global Security News</a>
+    <a href="https://quanta-analytica.mnshakoor.com" target="_blank" rel="noopener">Quanta Analytica</a>
+    <a href="https://quanta-analytica.mnshakoor.com/resources" target="_blank" rel="noopener">Resources</a>
+    <a href="https://mns-consulting.b12sites.com/index" target="_blank" rel="noopener">MNS Consulting</a>
   </div>
 
-  <!-- Footer containing social links and legal information.  Update the
-       social URLs as needed when official ARAC channels are known. -->
-  <footer class="rows gap-md text-center">
-    <div class="socials cols-flex center gap-md">
-      <a href="https://x.com/arac_int" target="_blank" aria-label="Twitter">
-        <svg class="e-font-icon-svg e-fab-twitter" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg>
-      </a>
-      <a href="https://www.linkedin.com/company/arac-international" target="_blank" aria-label="LinkedIn">
-        <svg class="e-font-icon-svg e-fab-linkedin" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"></path></svg>
-      </a>
-      <a href="https://www.youtube.com/@aracinternational" target="_blank" aria-label="YouTube">
-        <svg class="e-font-icon-svg e-fab-youtube" viewBox="0 0 576 512" xmlns="http://www.w3.org/2000/svg"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"></path></svg>
-      </a>
-    </div>
-    <div class="text-center" style="margin-top: var(--space-sm);">Governing Legislation: Canada Not‑for‑profit Corporations Act<br />Federal Corporation Number: 1213401‑2<br />D‑U‑N‑S® Number: 203696021</div>
-    <div class="text-center" style="font-size: var(--font-xs); margin-top: var(--space-xs);">
-      <a target="_blank" href="https://global.arac-international.org/terms-and-conditions">Terms and Conditions</a> |
-      <a target="_blank" href="https://global.arac-international.org/privacy-policy">Privacy Policy</a> |
-      <a target="_blank" href="https://global.arac-international.org/cookies-policy">Cookies Policy</a> |
-      <a target="_blank" href="https://global.arac-international.org/copyright-notice">Copyright Notice</a>
-    </div>
-    <div class="text-center" style="font-size: var(--font-xs); margin-top: var(--space-xs);">© Copyright 2025 BY ARAC INTERNATIONAL | ALL RIGHTS RESERVED</div>
-  </footer>
-
-  <!-- JavaScript to animate the canvas dots and rotating partner logos.  The
-       original functions from the IOSI site are adapted here to run on
-       page load without external dependencies. -->
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      /* Connecting dots animation.  Creates moving dots that connect when
-         they are within range of each other and the mouse cursor. */
-      (function() {
-        const settings = {
-          colorDot: '#cecece',
-          color: '#2ab27b',
-          speed: 1,
-          nb: 50,
-          size: 2,
-          distance: 150,
-          d_radius: 400,
-          ellipsis: 1,
-          fps: 30,
-          lineWidth: 0.1,
-        };
-        const canvas = document.querySelector('canvas.connecting-dots');
-        if (!canvas) return;
-        canvas.width = canvas.getBoundingClientRect().width;
-        canvas.height = canvas.getBoundingClientRect().height;
-        const ctx = canvas.getContext('2d');
-        ctx.fillStyle = settings.colorDot;
-        ctx.lineWidth = settings.lineWidth;
-        ctx.strokeStyle = settings.color;
-        let center = { x: canvas.width / 2, y: canvas.height / 2 };
-        let dots = [];
-        function distanceFromCenter(x, y) {
-          return Math.sqrt(Math.pow(center.x - x, 2) + Math.pow((center.y - y) * settings.ellipsis, 2));
-        }
-        function randomCoord() {
-          let x = Math.random() * canvas.width;
-          let y = Math.random() * canvas.height;
-          let distance = distanceFromCenter(x, y);
-          if (distance > center.x) return randomCoord();
-          else return { x, y };
-        }
-        class Dot {
-          constructor() {
-            const coord = randomCoord();
-            this.x = coord.x;
-            this.y = coord.y;
-            this.vx = (Math.random() - 0.5) * 2;
-            this.vy = -0.1 + Math.random();
-            this.radius = settings.size * Math.random();
-          }
-          create() {
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-            ctx.fill();
-          }
-          animate() {
-            if (this.x < 0 || this.x > canvas.width || distanceFromCenter(this.x, this.y) > center.x) {
-              this.vx = -this.vx;
-            }
-            this.x += this.vx * settings.speed;
-          }
-          line() {
-            for (let j = 0; j < settings.nb; j++) {
-              let jdot = dots[j];
-              let dx = this.x - jdot.x;
-              let dy = this.y - jdot.y;
-              if (dx < settings.distance && dy < settings.distance && dx > -settings.distance && dy > -settings.distance) {
-                ctx.beginPath();
-                ctx.moveTo(this.x, this.y);
-                ctx.lineTo(jdot.x, jdot.y);
-                ctx.stroke();
-                ctx.closePath();
-              }
-            }
-          }
-        }
-        for (let i = 0; i < settings.nb; i++) {
-          dots.push(new Dot());
-        }
-        function draw() {
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
-          for (let i = 0; i < settings.nb; i++) {
-            let dot = dots[i];
-            dot.create();
-            dot.animate();
-            dot.line();
-          }
-          requestAnimationFrame(draw);
-        }
-        requestAnimationFrame(draw);
-      })();
+    // --- Canvas bootstrap with HiDPI support ---
+    const canvas = document.getElementById('network');
+    const ctx = canvas.getContext('2d');
+    const DPR = Math.max(1, Math.floor(window.devicePixelRatio || 1));
 
-      /* Rotate the partner logos around a circle.  Each span element uses
-         CSS custom property --i to position itself in 3D space. */
-      const scope = document.querySelector('.scope');
-      if (scope) {
-        let amount = scope.children.length;
-        scope.style.setProperty('--amount', amount);
-        // apply initial positions
-        Array.from(scope.children).forEach((child, i) => {
-          child.style.setProperty('--i', i);
+    function resizeCanvas() {
+      const { innerWidth:w, innerHeight:h } = window;
+      canvas.width = w * DPR;
+      canvas.height = h * DPR;
+      canvas.style.width = w + 'px';
+      canvas.style.height = h + 'px';
+      ctx.setTransform(DPR, 0, 0, DPR, 0, 0); // scale drawing operations
+    }
+    resizeCanvas();
+
+    // --- Particle field (network-y background) ---
+    const nodes = [];
+    const NODE_COUNT = 46;
+    for (let i = 0; i < NODE_COUNT; i++) {
+      nodes.push({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        vx: (Math.random() - 0.5) * 0.7,
+        vy: (Math.random() - 0.5) * 0.7,
+        r: Math.random() * 1.8 + 0.9
+      });
+    }
+
+    // --- Partner icon sources (filenames are case-sensitive on GitHub Pages) ---
+    const IMAGE_SOURCES = [
+      'arac-stratcom.PNG',
+	'IOSI logo black-white.PNG',
+      'mns-consulting.JPG',
+      'digital-navigator.png',
+      'inssa.png',
+	'iep.PNG',
+	'the-sovereign-observer.png',
+	'usidhr-badge.png',
+	'arac-data.PNG',
+	'lbs-gsc.PNG',
+      'usidhr-hr-badge.PNG' // ARAC logo (also drawn in center)
+    ];
+
+    // Preload images safely – only draw after they are fully loaded
+    function loadImages(srcs) {
+      return Promise.all(srcs.map(src => new Promise(resolve => {
+        const img = new Image();
+        img.decoding = 'async';
+        img.onload = () => resolve({ ok: true, img, src });
+        img.onerror = () => resolve({ ok: false, img: null, src });
+        img.src = src;
+      })));
+    }
+
+    // Draw helper for a rounded placeholder if an icon fails to load
+    function drawPlaceholder(x, y, size, label) {
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(x, y, size/2, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(0,185,161,.15)';
+      ctx.fill();
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = 'rgba(0,185,161,.6)';
+      ctx.stroke();
+      ctx.fillStyle = 'rgba(245,245,245,.85)';
+      ctx.font = '600 10px system-ui, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(label || 'N/A', x, y);
+      ctx.restore();
+    }
+
+    // main animation loop – starts only when images are ready
+    function start(icons) {
+      const status = document.getElementById('status');
+      status.textContent = 'ready';
+      setTimeout(() => status.remove(), 1200);
+
+      let last = 0;
+      function frame(ts) {
+        // throttle to ~60fps automatically by rAF
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // --- animated particle network ---
+        for (let i = 0; i < nodes.length; i++) {
+          const n = nodes[i];
+          n.x += n.vx; n.y += n.vy;
+          if (n.x < 0 || n.x > window.innerWidth) n.vx *= -1;
+          if (n.y < 0 || n.y > window.innerHeight) n.vy *= -1;
+
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+          ctx.fillStyle = '#00B9A1';
+          ctx.fill();
+        }
+        for (let i = 0; i < nodes.length; i++) {
+          for (let j = i + 1; j < nodes.length; j++) {
+            const dx = nodes[i].x - nodes[j].x;
+            const dy = nodes[i].y - nodes[j].y;
+            const d = Math.hypot(dx, dy);
+            if (d < 150) {
+              ctx.strokeStyle = `rgba(0,185,161,${1 - d / 150})`;
+              ctx.lineWidth = 0.5;
+              ctx.beginPath();
+              ctx.moveTo(nodes[i].x, nodes[i].y);
+              ctx.lineTo(nodes[j].x, nodes[j].y);
+              ctx.stroke();
+            }
+          }
+        }
+
+        // --- center ARAC emblem ---
+        const cx = window.innerWidth / 2;
+        const cy = window.innerHeight / 2;
+        const centerSize = 110;
+        const center = icons.find(it => it.src.endsWith('IMG_0868.PNG')) || icons[0];
+        if (center && center.ok && center.img && center.img.complete && center.img.naturalWidth > 0) {
+          ctx.save();
+          ctx.beginPath();
+          ctx.arc(cx, cy, centerSize/2, 0, Math.PI * 2);
+          ctx.closePath();
+          ctx.clip();
+          ctx.drawImage(center.img, cx - centerSize/2, cy - centerSize/2, centerSize, centerSize);
+          ctx.restore();
+        } else {
+          drawPlaceholder(cx, cy, centerSize, 'ARAC');
+        }
+
+        // --- orbiting partner icons ---
+        const RADIUS = Math.min(250, Math.max(170, Math.min(window.innerWidth, window.innerHeight) / 3));
+        const time = performance.now() * 0.00025; // speed
+        const size = 70;
+        const step = (Math.PI * 2) / icons.length;
+        icons.forEach((it, i) => {
+          const ang = time + i * step;
+          const x = cx + RADIUS * Math.cos(ang);
+          const y = cy + RADIUS * Math.sin(ang);
+
+          if (it.ok && it.img && it.img.complete && it.img.naturalWidth > 0) {
+            ctx.save();
+            ctx.beginPath();
+            ctx.arc(x, y, size/2, 0, Math.PI * 2);
+            ctx.closePath();
+            ctx.clip();
+            ctx.drawImage(it.img, x - size/2, y - size/2, size, size);
+            ctx.restore();
+          } else {
+            // Label from filename
+            const label = (it.src.split('/') .pop() || 'logo').split('.')[0].slice(0, 8);
+            drawPlaceholder(x, y, size, label);
+          }
         });
+
+        requestAnimationFrame(frame);
       }
+      requestAnimationFrame(frame);
+    }
+
+    // Load and then start the animation
+    loadImages(IMAGE_SOURCES).then(results => {
+      // Filter to keep order but mark ok/failed
+      const icons = results.map(r => ({ ok: r.ok, img: r.img, src: r.src }));
+
+      // --- simple runtime checks ("test cases") ---
+      console.assert(icons.length === IMAGE_SOURCES.length, 'Test: all sources processed');
+      const loadedCount = icons.filter(i => i.ok).length;
+      console.assert(loadedCount > 0, 'Test: at least one image loaded successfully');
+
+      // Log any failures to help debug missing filenames/case sensitivity on GitHub Pages
+      icons.forEach(i => { if (!i.ok) console.warn('Image failed to load (check filename/case):', i.src); });
+
+      start(icons);
+    });
+
+    // Redraw at correct resolution when the window size changes
+    window.addEventListener('resize', () => {
+      resizeCanvas();
     });
   </script>
 </body>
