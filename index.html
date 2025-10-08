@@ -17,10 +17,19 @@
     body {
       margin: 0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-      background: radial-gradient(circle at 50% 40%, var(--ink), var(--bg));
+      background: linear-gradient(135deg, #001a00, #000000, #004d00);
+      background-size: 200% 200%;
+      animation: gradientShift 20s ease infinite;
       color: var(--text);
       overflow: hidden;
     }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
     header {
       position: absolute;
       top: 18px;
@@ -50,7 +59,6 @@
     }
     .links a:hover { background: var(--green); transform: translateY(-1px); }
 
-    /* Tiny helper label for load state */
     #status { position: absolute; top: 10px; left: 10px; font-size: 12px; opacity: .7; z-index: 15; }
   </style>
 </head>
@@ -74,7 +82,6 @@
   </div>
 
   <script>
-    // --- Canvas bootstrap with HiDPI support ---
     const canvas = document.getElementById('network');
     const ctx = canvas.getContext('2d');
     const DPR = Math.max(1, Math.floor(window.devicePixelRatio || 1));
@@ -85,11 +92,10 @@
       canvas.height = h * DPR;
       canvas.style.width = w + 'px';
       canvas.style.height = h + 'px';
-      ctx.setTransform(DPR, 0, 0, DPR, 0, 0); // scale drawing operations
+      ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
     }
     resizeCanvas();
 
-    // --- Particle field (network-y background) ---
     const nodes = [];
     const NODE_COUNT = 46;
     for (let i = 0; i < NODE_COUNT; i++) {
@@ -102,24 +108,12 @@
       });
     }
 
-    // --- Partner icon sources (filenames are case-sensitive on GitHub Pages) ---
     const IMAGE_SOURCES = [
-      'arac-stratcom.PNG',
-	'IOSI logo black-white.PNG',
-      'logo-mns2-seal.png',
-      'digital-navigator.PNG',
-	'iosi-mforce.PNG',
-	'srmp-c-seal.PNG',
-      'inssa.PNG',
-	'iep.PNG',
-	'the-sovereign-observer.png',
-	'usidhr-badge.PNG',
-	'arac-data.PNG',
-	'lbs-gsc.PNG',
-      'usidhr-hr-badge.PNG' // ARAC logo (also drawn in center)
+      'arac-stratcom.PNG', 'IOSI logo black-white.PNG', 'logo-mns2-seal.png', 'digital-navigator.PNG',
+      'iosi-mforce.PNG', 'srmp-c-seal.PNG', 'inssa.PNG', 'iep.PNG', 'the-sovereign-observer.png',
+      'usidhr-badge.PNG', 'arac-data.PNG', 'lbs-gsc.PNG', 'usidhr-hr-badge.PNG'
     ];
 
-    // Preload images safely – only draw after they are fully loaded
     function loadImages(srcs) {
       return Promise.all(srcs.map(src => new Promise(resolve => {
         const img = new Image();
@@ -130,7 +124,6 @@
       })));
     }
 
-    // Draw helper for a rounded placeholder if an icon fails to load
     function drawPlaceholder(x, y, size, label) {
       ctx.save();
       ctx.beginPath();
@@ -148,18 +141,25 @@
       ctx.restore();
     }
 
-    // main animation loop – starts only when images are ready
     function start(icons) {
       const status = document.getElementById('status');
       status.textContent = 'ready';
       setTimeout(() => status.remove(), 1200);
 
-      let last = 0;
-      function frame(ts) {
-        // throttle to ~60fps automatically by rAF
+      let hueShift = 0;
+
+      function frame() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // --- animated particle network ---
+        // Dynamic gradient that slowly changes hue
+        hueShift = (hueShift + 0.3) % 360;
+        const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        grad.addColorStop(0, `hsl(${hueShift}, 60%, 8%)`);
+        grad.addColorStop(0.4, `hsl(${(hueShift + 60) % 360}, 60%, 5%)`);
+        grad.addColorStop(1, `hsl(${(hueShift + 120) % 360}, 60%, 10%)`);
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
         for (let i = 0; i < nodes.length; i++) {
           const n = nodes[i];
           n.x += n.vx; n.y += n.vy;
@@ -187,11 +187,10 @@
           }
         }
 
-        // --- center ARAC emblem ---
         const cx = window.innerWidth / 2;
         const cy = window.innerHeight / 2;
         const centerSize = 110;
-        const center = icons.find(it => it.src.endsWith('IMG_0868.PNG')) || icons[0];
+        const center = icons.find(it => it.src.endsWith('arac-stratcom.PNG')) || icons[0];
         if (center && center.ok && center.img && center.img.complete && center.img.naturalWidth > 0) {
           ctx.save();
           ctx.beginPath();
@@ -204,9 +203,8 @@
           drawPlaceholder(cx, cy, centerSize, 'ARAC');
         }
 
-        // --- orbiting partner icons ---
         const RADIUS = Math.min(250, Math.max(170, Math.min(window.innerWidth, window.innerHeight) / 3));
-        const time = performance.now() * 0.00025; // speed
+        const time = performance.now() * 0.00025;
         const size = 70;
         const step = (Math.PI * 2) / icons.length;
         icons.forEach((it, i) => {
@@ -223,7 +221,6 @@
             ctx.drawImage(it.img, x - size/2, y - size/2, size, size);
             ctx.restore();
           } else {
-            // Label from filename
             const label = (it.src.split('/') .pop() || 'logo').split('.')[0].slice(0, 8);
             drawPlaceholder(x, y, size, label);
           }
@@ -234,26 +231,12 @@
       requestAnimationFrame(frame);
     }
 
-    // Load and then start the animation
     loadImages(IMAGE_SOURCES).then(results => {
-      // Filter to keep order but mark ok/failed
       const icons = results.map(r => ({ ok: r.ok, img: r.img, src: r.src }));
-
-      // --- simple runtime checks ("test cases") ---
-      console.assert(icons.length === IMAGE_SOURCES.length, 'Test: all sources processed');
-      const loadedCount = icons.filter(i => i.ok).length;
-      console.assert(loadedCount > 0, 'Test: at least one image loaded successfully');
-
-      // Log any failures to help debug missing filenames/case sensitivity on GitHub Pages
-      icons.forEach(i => { if (!i.ok) console.warn('Image failed to load (check filename/case):', i.src); });
-
       start(icons);
     });
 
-    // Redraw at correct resolution when the window size changes
-    window.addEventListener('resize', () => {
-      resizeCanvas();
-    });
+    window.addEventListener('resize', resizeCanvas);
   </script>
 </body>
 </html>
